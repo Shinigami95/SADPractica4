@@ -7,7 +7,7 @@ import weka.core.Instances;
 public class ArffFromDirs {
 	public static void main(String[] args){
 		String[] args2 = {"C:/Users/Txema/Desktop/movies_reviews/train","C:/Users/Txema/Desktop/suerte.arff"};
-		if(args2.length!=2){
+		if(args2.length != 2){
 			System.out.println("ERROR, par\u00E1metros inv\u00E1lidos");
 			return;
 		}
