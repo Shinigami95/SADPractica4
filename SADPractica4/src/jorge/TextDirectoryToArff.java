@@ -20,6 +20,7 @@ package jorge;
  */
  
 import java.io.*;
+
 import weka.core.*;
  
 /**
@@ -35,7 +36,7 @@ import weka.core.*;
  */
 public class TextDirectoryToArff {
  
-	public Instances createDataset(String directoryPath) throws Exception {
+	public Instances createDatasetSupervised(String directoryPath) throws Exception {
 		 
 		File dir = new File(directoryPath);
 		File fileAux;
@@ -44,10 +45,9 @@ public class TextDirectoryToArff {
 		for (int i = 0; i < files.length; i++){
 			classValues.addElement(files[i]);
 		}
-		FastVector atts = new FastVector(3);
-		atts.addElement(new Attribute("class", classValues));
-		atts.addElement(new Attribute("filename", (FastVector) null));
+		FastVector atts = new FastVector(2);
 		atts.addElement(new Attribute("contents", (FastVector) null));
+		atts.addElement(new Attribute("class", classValues));
 		Instances data = new Instances("text_files_in_" + directoryPath, atts, 0);
 		for (int i = 0; i < files.length; i++) {
 			fileAux = new File(directoryPath+"/"+files[i]);
@@ -55,6 +55,17 @@ public class TextDirectoryToArff {
 				cargarAtrribDeClase(files[i], directoryPath + File.separator + files[i], data);
 			}
 		}
+		return data;
+	}
+	
+	public Instances createDatasetUnsupervised(String directoryPath) throws Exception {
+		FastVector atts = new FastVector(2);
+		atts.addElement(new Attribute("contents", (FastVector) null));
+		FastVector classValues = new FastVector(1);
+		classValues.addElement("");
+		atts.addElement(new Attribute("class",  classValues));
+		Instances data = new Instances("text_files_in_" + directoryPath, atts, 0);
+		cargarAtrribDeClase(null, directoryPath, data);
 		return data;
 	}
   
@@ -65,9 +76,7 @@ public class TextDirectoryToArff {
 		for (int i = 0; i < files.length; i++) {
 		if (files[i].endsWith(".txt")) {
 			try {
-				double[] newInst = new double[3];
-				newInst[0] = (double)data.attribute(0).indexOfValue(clase);
-				newInst[1] = (double)data.attribute(1).addStringValue(files[i]);
+				double[] newInst = new double[2];
 				File txt = new File(directoryPath + File.separator + files[i]);
 				InputStreamReader is;
 				is = new InputStreamReader(new FileInputStream(txt));
@@ -77,8 +86,12 @@ public class TextDirectoryToArff {
 					c = changeChar((char)c);
 					txtStr.append((char)c);
 				}
-				newInst[2] = (double)data.attribute(2).addStringValue(txtStr.toString());
-				System.out.println("Instancia ---> "+new Instance(1.0, newInst));
+				newInst[0] = (double)data.attribute(0).addStringValue(txtStr.toString());
+				if(clase==null){
+					newInst[1] = Double.NaN;
+				}else{
+					newInst[1] = (double)data.attribute(1).indexOfValue(clase);
+				}
 				data.add(new Instance(1.0, newInst));
 				is.close();
 				} catch (Exception e) {
