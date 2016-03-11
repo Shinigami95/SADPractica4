@@ -78,8 +78,27 @@ public class TextFileToArff implements TextPlainToArff{
 
 	@Override
 	public Instances createDatasetUnsupervised(String filePath) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		FileReader fileRead = new FileReader(filePath);
+		BufferedReader buff = new BufferedReader(fileRead);
+		
+		FastVector atts = new FastVector(2);
+		FastVector classValues = new FastVector(1);
+		classValues.addElement("");
+		atts.addElement(new Attribute("contents", (FastVector) null));
+		atts.addElement(new Attribute("class", classValues));
+		Instances data = new Instances("text_files_in_" + filePath, atts, 0);
+		double[] newInst;
+		
+		for(String l = buff.readLine();l!=null;l=buff.readLine()){
+			newInst = new double[2];
+			newInst[0] = (double)data.attribute(0).addStringValue(l);
+			newInst[1] = Double.NaN;
+			data.add(new Instance(1.0, newInst));
+		}
+		
+		buff.close();
+		fileRead.close();	
+		return data;
 	}
 	
 	

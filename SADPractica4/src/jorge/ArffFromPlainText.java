@@ -47,8 +47,8 @@ public class ArffFromPlainText {
 					else if(t==0 && !flagU) getArffFrom(new TextDirectoryToArff(), file, arff, true);
 					else if(t==1 && flagU) getArffFrom(new TextFileToArff(),file, arff, false);
 					else if(t==1 && !flagU)getArffFrom(new TextFileToArff(),file, arff, true);
-					else if(t==2 && flagU);
-					else if(t==2 && !flagU);
+					else if(t==2 && flagU)getArffFrom(new TextCsvToArff(),file, arff, true);
+					else if(t==2 && !flagU)getArffFrom(new TextCsvToArff(),file, arff, true);
 				}
 				
 			} else {
@@ -82,6 +82,24 @@ public class ArffFromPlainText {
 	}
 	
 	private static void printInst(){
-		System.out.println("Inst");
+		String s= "----------------------------------- INSTRUCCIONES -----------------------------------\n"
+				+ "java -jar getArff.jar -f plain_data -a arff_file -t {0,1,2} [-u]\n"
+				+ "Las opciones son:\n"
+				+ "\t-h\n"
+				+ "\t\tMuestra las instrucciones del programa, ignora el resto de opciones.\n"
+				+ "\t-f path\n"
+				+ "\t\tSe elige en path el fichero o directorio de los datos en bruto.\n"
+				+ "\t-a path\n"
+				+ "\t\tSe elige en path el fichero donde se guardar\u00E1 el arff resultante.\n"
+				+ "\t-u\n"
+				+ "\t\tSirve para indicar que sea sin supervisar (por defecto supervisado)\n"
+				+ "\t-t i\n"
+				+ "\t\tSe indica en i el tipo de fichero en bruto:\n"
+				+ "\t\t\t0 -> Directorio (pelis)\n"
+				+ "\t\t\t1 -> Texto plano (sms)\n"
+				+ "\t\t\t2 -> Csv (tweets)\n"
+				+ "\t\t\totro -> Da error\n"
+				+ "-------------------------------------------------------------------------------------";
+		System.out.println(s);
 	}
 }
