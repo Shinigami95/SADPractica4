@@ -34,11 +34,12 @@ import weka.core.*;
  * @author Richard Kirkby (rkirkby at cs.waikato.ac.nz)
  * @version 1.0
  */
-public class TextDirectoryToArff {
+public class TextDirectoryToArff implements TextPlainToArff{
  
-	public Instances createDatasetSupervised(String directoryPath) throws Exception {
+	@Override
+	public Instances createDatasetSupervised(String filePath) throws Exception {
 		 
-		File dir = new File(directoryPath);
+		File dir = new File(filePath);
 		File fileAux;
 		String[] files = dir.list();
 		FastVector classValues = new FastVector(files.length);
@@ -48,27 +49,28 @@ public class TextDirectoryToArff {
 		FastVector atts = new FastVector(2);
 		atts.addElement(new Attribute("contents", (FastVector) null));
 		atts.addElement(new Attribute("class", classValues));
-		Instances data = new Instances("text_files_in_" + directoryPath, atts, 0);
+		Instances data = new Instances("text_files_in_" + filePath, atts, 0);
 		for (int i = 0; i < files.length; i++) {
-			fileAux = new File(directoryPath+"/"+files[i]);
+			fileAux = new File(filePath+"/"+files[i]);
 			if (fileAux.isDirectory()) {
-				cargarAtrribDeClase(files[i], directoryPath + File.separator + files[i], data);
+				cargarAtrribDeClase(files[i], filePath + File.separator + files[i], data);
 			}
 		}
 		return data;
 	}
 	
-	public Instances createDatasetUnsupervised(String directoryPath) throws Exception {
+	@Override
+	public Instances createDatasetUnsupervised(String filePath) throws Exception {
 		FastVector atts = new FastVector(2);
 		atts.addElement(new Attribute("contents", (FastVector) null));
 		FastVector classValues = new FastVector(1);
 		classValues.addElement("");
 		atts.addElement(new Attribute("class",  classValues));
-		Instances data = new Instances("text_files_in_" + directoryPath, atts, 0);
-		cargarAtrribDeClase(null, directoryPath, data);
+		Instances data = new Instances("text_files_in_" + filePath, atts, 0);
+		cargarAtrribDeClase(null, filePath, data);
 		return data;
 	}
-  
+	
 	private void cargarAtrribDeClase(String clase, String directoryPath, Instances data){
 		System.out.println("Se crean las instancias de la clase: "+ clase);
 		File dir = new File(directoryPath);
@@ -83,8 +85,8 @@ public class TextDirectoryToArff {
 				StringBuffer txtStr = new StringBuffer();
 				int c;
 				while ((c = is.read()) != -1) {
-					c = changeChar((char)c);
-					txtStr.append((char)c);
+					c = (char)c;
+					if(!isFakeChar((char)c)) txtStr.append((char)c);
 				}
 				newInst[0] = (double)data.attribute(0).addStringValue(txtStr.toString());
 				if(clase==null){
@@ -102,10 +104,10 @@ public class TextDirectoryToArff {
 		System.out.println("Se crearon las instancias de la clase: "+ clase);
 	}
 	
-	private char changeChar(char c){
-		if(c=='@'&&c==','&&c=='%'&&c=='#'&&c=='/'&&c=='\''&&c=='\"'){
-			return '_';
+	private boolean isFakeChar(char c){
+		if(c=='@'||c==','||c=='%'||c=='#'||c=='/'||c=='\''||c=='\"'){
+			return true;
 		}
-		return c;
+		return false;
 	}
 }

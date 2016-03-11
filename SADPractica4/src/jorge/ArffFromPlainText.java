@@ -1,7 +1,6 @@
 package jorge;
 
 import java.io.FileWriter;
-
 import weka.core.Instances;
 
 public class ArffFromPlainText {
@@ -44,10 +43,10 @@ public class ArffFromPlainText {
 				}
 				else{
 					if(t<0||t>2||file==null||arff==null) throw new Exception();
-					if(t==0 && flagU) getArffFromDirectorySistem(file, arff, false);
-					else if(t==0 && !flagU) getArffFromDirectorySistem(file, arff, true);
-					else if(t==1 && flagU);
-					else if(t==1 && !flagU);
+					if(t==0 && flagU) getArffFrom(new TextDirectoryToArff(),file, arff, false);
+					else if(t==0 && !flagU) getArffFrom(new TextDirectoryToArff(), file, arff, true);
+					else if(t==1 && flagU) getArffFrom(new TextFileToArff(),file, arff, false);
+					else if(t==1 && !flagU)getArffFrom(new TextFileToArff(),file, arff, true);
 					else if(t==2 && flagU);
 					else if(t==2 && !flagU);
 				}
@@ -62,16 +61,15 @@ public class ArffFromPlainText {
 		}
 	}
 	
-	private static void getArffFromDirectorySistem(String dir, String arff, boolean superv){
+	private static void getArffFrom(TextPlainToArff tpta, String dir, String arff, boolean superv){
 		try {
 			System.out.println("Se crear\u00E1 el fichero ARFF");
-			TextDirectoryToArff text = new TextDirectoryToArff();
 			Instances inst;
 			if(superv){
-				inst = text.createDatasetSupervised(dir);
+				inst = tpta.createDatasetSupervised(dir);
 			}
 			else{
-				inst = text.createDatasetUnsupervised(dir);
+				inst = tpta.createDatasetUnsupervised(dir);
 			}
 			FileWriter fw = new FileWriter(arff);
 			String arffText = inst.toString();
