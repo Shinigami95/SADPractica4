@@ -16,11 +16,10 @@ public class Main {
 		TextDirectoryToArff tdta = new TextDirectoryToArff();
 		try {
 			Instances dataset = tdta.createDataset(pathtxt);
-			//File arff=new File(patharff);
-			//FileWriter fw=new FileWriter(arff);
-			//fw.write(dataset.toString());
-			//fw.close();
-			System.out.println(dataset);
+			File arff=new File(patharff);
+			FileWriter fw=new FileWriter(arff);
+			fw.write(dataset.toString());
+			fw.close();
 		} catch (Exception e) {
 			System.err.println(e.getMessage());
 			e.printStackTrace();

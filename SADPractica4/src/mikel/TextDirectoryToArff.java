@@ -54,6 +54,7 @@ public class TextDirectoryToArff {
     try {
       double[] newInst = new double[2];
       newInst[0] = (double)data.attribute(0).addStringValue(files[i]);
+      newInst[1] = (double)data.attribute(1).addStringValue(files2[j]);
       File txt = new File(directoryPath + File.separator+files[i]+ File.separator + files2[j]);
       InputStreamReader is;
       is = new InputStreamReader(new FileInputStream(txt));
@@ -62,7 +63,7 @@ public class TextDirectoryToArff {
       while ((c = is.read()) != -1) {
         txtStr.append((char)c);
       }
-      newInst[1] = (double)data.attribute(1).addStringValue(txtStr.toString());
+      newInst[3] = (double)data.attribute(3).addStringValue(txtStr.toString());
       data.add(new Instance(1.0, newInst));
     } catch (Exception e) {
       e.printStackTrace();
