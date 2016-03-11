@@ -11,8 +11,10 @@ public class Main {
 		if (args.length != 2) {
 			System.out.println("Error en los parametros.");
 		}
-		String pathtxt="C:/Users/shind/Desktop/movies_reviews/train";
-		String patharff="C:/Users/shind/Desktop/movies_reviews/train/lista.arff";
+		//String pathtxt="C:/Users/shind/Desktop/movies_reviews/train";
+		//String patharff="C:/Users/shind/Desktop/movies_reviews/train/lista.arff";
+		String pathtxt="C:/Users/Txema/Desktop/movies_reviews/train";
+		String patharff="C:/Users/Txema/Desktop/suerte.arff";
 		TextDirectoryToArff tdta = new TextDirectoryToArff();
 		try {
 			Instances dataset = tdta.createDataset(pathtxt);
