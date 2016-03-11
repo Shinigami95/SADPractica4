@@ -52,7 +52,7 @@ public class TextDirectoryToArff {
     	for(int j = 0; j < files2.length; j++){
       if (files2[j].endsWith(".txt")) {
     try {
-      double[] newInst = new double[2];
+      double[] newInst = new double[3];
       newInst[0] = (double)data.attribute(0).addStringValue(files[i]);
       newInst[1] = (double)data.attribute(1).addStringValue(files2[j]);
       File txt = new File(directoryPath + File.separator+files[i]+ File.separator + files2[j]);
