@@ -1,4 +1,4 @@
-package jorge;
+package jorge.arffGenerator;
 
 import weka.core.Instances;
 

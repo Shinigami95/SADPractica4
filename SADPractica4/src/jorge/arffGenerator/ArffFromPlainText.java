@@ -1,4 +1,4 @@
-package jorge;
+package jorge.arffGenerator;
 
 import java.io.FileWriter;
 import weka.core.Instances;

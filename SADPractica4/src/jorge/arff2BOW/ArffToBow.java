@@ -10,15 +10,19 @@ public class ArffToBow {
 		} else {
 			try {
 				File filObj = new File(args[args.length-1]);
-				if(!filObj.isDirectory()){
-					throw new FileNotFoundException("el objetivo no es un directorio");
+				if(filObj.exists()){
+					if(!filObj.isDirectory()){
+						throw new FileNotFoundException("el objetivo no es un directorio");
+					}
+				} else {
+					filObj.mkdir();
 				}
 				File[] filArray = new File[args.length-1];
 				for(int i = 0;i<args.length-1;i++){
 					filArray[i] = new File(args[i]);
 					if(!filArray[i].exists()) throw new FileNotFoundException("alguno de los ficheros no es correcto");
 				}
-				GestorBagOfWords.getGestor().generateBOW(filObj,filArray);
+				GestorBagOfWords.getGestor().generateBOW(filObj,filArray,false,false);
 			} catch(FileNotFoundException e){
 				System.out.println("ERROR, "+e.getMessage());
 			}

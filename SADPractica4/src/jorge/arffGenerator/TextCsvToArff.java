@@ -1,4 +1,4 @@
-package jorge;
+package jorge.arffGenerator;
 
 import java.io.BufferedReader;
 import java.io.File;
