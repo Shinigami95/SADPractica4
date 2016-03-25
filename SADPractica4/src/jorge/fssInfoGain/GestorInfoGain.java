@@ -26,24 +26,32 @@ public class GestorInfoGain {
 	
 	public void generateInfoGainedAttributes(File filTrain, File[] filArray, File filObj) {
 		try {
+			System.out.println("Aplicando InfoGain...");
 			Instances trainInst = new Instances(new FileReader(filTrain));
 			trainInst.setClass(trainInst.attribute("class"));
 			AttributeSelection attribSel = new AttributeSelection();
 			InfoGainAttributeEval iga = new InfoGainAttributeEval();
 			Ranker rank = new Ranker();
 			rank.setThreshold(0.0);
+			rank.setNumToSelect(-1);
 			attribSel.setEvaluator(iga);
 			attribSel.setSearch(rank);
 			attribSel.setInputFormat(trainInst);
+			System.out.println("Fich: "+filTrain.getName());
 			trainInst = Filter.useFilter(trainInst, attribSel);
 			FileWriter fw = new FileWriter(filObj+"/FSSIG_"+filTrain.getName());
 			fw.write(trainInst.toString());
+			fw.close();
+			System.out.println("--> FSSIG_"+filTrain.getName()+" creado correctamente.");
 			Instances inst;
 			for(File fil : filArray){
+				System.out.println("Fich: "+fil.getName());
 				inst = new Instances(new FileReader(fil));
 				inst = Filter.useFilter(inst, attribSel);
 				fw = new FileWriter(filObj+"/FSSIG_"+fil.getName());
 				fw.write(inst.toString());
+				fw.close();
+				System.out.println("--> FSSIG_"+fil.getName()+" creado correctamente.");
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -51,27 +59,4 @@ public class GestorInfoGain {
 			e.printStackTrace();
 		}
 	}
-/*	public void generateInfoGainedAttributes(File filTrain, File[] filArray, File filObj) {
-		try {
-			AttributeSelection attribSel = new AttributeSelection();
-			InfoGainAttributeEval iga = new InfoGainAttributeEval();
-			Ranker rank = new Ranker();
-			rank.setThreshold(0.0);
-			attribSel.setEvaluator(iga);
-			attribSel.setSearch(rank);
-			Instances trainInst;
-			trainInst = new Instances(new FileReader(filTrain));
-			trainInst.setClass(trainInst.attribute("class"));
-			attribSel.SelectAttributes(trainInst);
-			attribSel.setRanking(true);
-			attribSel.setXval(false);
-			System.out.println(attribSel.toResultsString());
-		} catch (IOException e) {
-			e.printStackTrace();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-	
-*/
 }

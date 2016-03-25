@@ -35,7 +35,7 @@ public class AttribSelectWithInfoGain {
 		String s= "------------------------------- INSTRUCCIONES -------------------------------\n"
 				+ "java -jar fssInfoGain.jar train.arff {fich.arff} objetive_dir\n"
 				+ "Primero se indica el fichero train.\n"
-				+ "A continuaci\00F3n todos los ficheros arff (dev, blind).\n"
+				+ "A continuaci\u00F3n todos los ficheros arff (dev, blind).\n"
 				+ "El \u00FAltimo es el directorio donde se guardar\u00E1n los arff resultantes.\n"
 				+ "Si el directorio objetivo no existe se crear\u00E1.\n"
 				+ "-----------------------------------------------------------------------------";
