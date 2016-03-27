@@ -5,12 +5,16 @@ public class ModelConfig {
 	private boolean flagS;
 	private String trainPath;
 	private String devPath;
+	private String modelPath;
+	private int evaluationSchema; // 1) Not Honest, 2) 10-Fold CrossVal, 3) Hold-Out
 	
 	public ModelConfig(){
 		useNaive = false;
 		flagS = false;
 		trainPath = null;
 		devPath= null;
+		modelPath= null;
+		evaluationSchema= 0;
 	}
 	
 	public boolean isUseNaive() {
@@ -43,6 +47,22 @@ public class ModelConfig {
 
 	public void setDevPath(String devPath) {
 		this.devPath = devPath;
+	}
+	
+	public String getModelPath() {
+		return modelPath;
+	}
+
+	public void setModelPath(String modelPath) {
+		this.modelPath = modelPath;
+	}
+	
+	public int getEvaluationSchema() {
+		return evaluationSchema;
+	}
+
+	public void setEvaluationSchema(int evaluationSchema) {
+		this.evaluationSchema = evaluationSchema;
 	}
 
 }
