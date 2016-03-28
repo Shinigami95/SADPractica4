@@ -1,4 +1,4 @@
-package jorge.clasificacion;
+package clasificacion;
 
 import java.io.File;
 import java.io.FileInputStream;

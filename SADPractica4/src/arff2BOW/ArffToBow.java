@@ -1,9 +1,9 @@
-package jorge.fssInfoGain;
+package arff2BOW;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 
-public class AttribSelectWithInfoGain {
+public class ArffToBow {
 	public static void main(String[] args){
 		if(args.length<2){
 			printInst();
@@ -17,28 +17,25 @@ public class AttribSelectWithInfoGain {
 				} else {
 					filObj.mkdir();
 				}
-				File[] filArray = new File[args.length-2];
-				File filTrain = new File(args[0]);
-				for(int i = 0;i<args.length-2;i++){
-					filArray[i] = new File(args[i+1]);
+				File[] filArray = new File[args.length-1];
+				for(int i = 0;i<args.length-1;i++){
+					filArray[i] = new File(args[i]);
 					if(!filArray[i].exists()) throw new FileNotFoundException("alguno de los ficheros no es correcto");
 				}
-				GestorInfoGain.getGestor().generateInfoGainedAttributes(filTrain,filArray,filObj);
+				GestorBagOfWords.getGestor().generateBOW(filObj,filArray,false,false);
 			} catch(FileNotFoundException e){
 				System.out.println("ERROR, "+e.getMessage());
-				printInst();
 			}
 		}
 	}
 	
 	private static void printInst(){
-		String s= "------------------------------- INSTRUCCIONES -------------------------------\n"
-				+ "java -jar fssInfoGain.jar train.arff {fich.arff} objetive_dir\n"
-				+ "Primero se indica el fichero train.\n"
-				+ "A continuaci\u00F3n todos los ficheros arff (dev, blind).\n"
+		String s= "----------------------------------- INSTRUCCIONES -----------------------------------\n"
+				+ "java -jar arff2BOW.jar {fich.arff} objetive_dir\n"
+				+ "Primero se indican todos los ficheros arff (train, dev, blind).\n"
 				+ "El \u00FAltimo es el directorio donde se guardar\u00E1n los arff resultantes.\n"
 				+ "Si el directorio objetivo no existe se crear\u00E1.\n"
-				+ "-----------------------------------------------------------------------------";
+				+ "-------------------------------------------------------------------------------------";
 		System.out.println(s);
 	}
 }

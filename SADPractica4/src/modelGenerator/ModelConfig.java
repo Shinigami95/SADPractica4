@@ -1,4 +1,4 @@
-package jorge.modelGenerator;
+package modelGenerator;
 
 public class ModelConfig {
 	private boolean useNaive;

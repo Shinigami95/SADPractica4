@@ -1,4 +1,4 @@
-package jorge.clasificacion;
+package clasificacion;
 
 public class ClasifConfig {
 	private String blindPath;

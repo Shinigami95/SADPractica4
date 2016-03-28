@@ -1,4 +1,4 @@
-package jorge.modelGenerator;
+package modelGenerator;
 
 import java.io.File;
 import java.io.FileNotFoundException;

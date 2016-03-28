@@ -1,10 +1,10 @@
-package jorge.modelGenerator;
+package modelGenerator;
 
-public class ModelGeneratorWithSchema {
+public class ModelGenerator {
 
 	public static void main(String[] args){
 		try{
-			if(args.length==0){ // Flag que permite mostrar las instrucciones
+			if(args.length==0){
 				printInst();
 			} else {
 				ModelConfig mc = new ModelConfig();
@@ -23,23 +23,15 @@ public class ModelGeneratorWithSchema {
 						mc.setDevPath(args[i+1]);
 						i+=2;
 						break;
-					case "-b": // Path del fichero donde se crea el binario del modelo
-						mc.setModelPath(args[i+1]);
-						i+=2;
-						break;
 					case "-n": // Flag para indicar que se utilizara naive bayes
 						mc.setUseNaive(true);
 						i+=1;
-						break;
-					case "-e": // 1) Not Honest, 2) 10-Fold CrossVal, 3) Hold-Out
-						mc.setEvaluationSchema(Integer.parseInt(args[i+1]));
-						i+=2;
 						break;
 					default:
 						throw new Exception();
 					}
 				}
-				GestorAjusteParam.getGestor().infiereConEsquema(mc);
+				GestorAjusteParam.getGestor().infiere(mc);
 			}
 		} catch (Exception e){
 			System.out.println("ERROR, par\u00E1metros incorrectos");
@@ -48,7 +40,18 @@ public class ModelGeneratorWithSchema {
 	}
 	
 	public static void printInst(){
-		//TODO write instructions
-		System.out.println("INST Schema");
+		String s= "------------------------- INSTRUCCIONES -------------------------\n"
+				+ "java -jar GetModel.jar -t train.arff -d dev.arff [-s] [-n]\n"
+				+ "Las opciones son:\n"
+				+ "\t-t path\n"
+				+ "\t\tSe elige en path el fichero train.\n"
+				+ "\t-d path\n"
+				+ "\t\tSe elige en path el fichero dev.\n"
+				+ "\t-s\n"
+				+ "\t\tMostrar\u00E1 informaci\u00F3n extra.\n"
+				+ "\t-n\n"
+				+ "\t\tPara utilizar NaiveBayes, sin \u00E9l BayesNet.\n"
+				+ "-----------------------------------------------------------------";
+		System.out.println(s);
 	}
 }

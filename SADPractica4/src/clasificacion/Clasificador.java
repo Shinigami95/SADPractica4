@@ -1,4 +1,4 @@
-package jorge.clasificacion;
+package clasificacion;
 
 public class Clasificador {
 
@@ -40,7 +40,18 @@ public class Clasificador {
 	}
 	
 	public static void printInst(){
-		//TODO write instructions
-		System.out.println("INST clasif");
+		String s= "---------------------------------------------- INSTRUCCIONES ----------------------------------------------\n"
+				+ "java -jar Classify.jar -b blind.arff -m fich.model [-r result.txt] [-n]\n"
+				+ "Las opciones son:\n"
+				+ "\t-b path\n"
+				+ "\t\tSe elige en path el fichero blind.\n"
+				+ "\t-m path\n"
+				+ "\t\tSe elige en path el fichero binario del modelo.\n"
+				+ "\t-r path\n"
+				+ "\t\tDirectorio donde se crear\u00E1 el fichero con los resultados (por defecto imprime en consola).\n"
+				+ "\t-n\n"
+				+ "\t\tPara indicar que el modelo es NaiveBayes, sin \u00E9l BayesNet.\n"
+				+ "-----------------------------------------------------------------------------------------------------------";
+		System.out.println(s);
 	}
 }

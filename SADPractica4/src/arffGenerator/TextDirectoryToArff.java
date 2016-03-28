@@ -1,4 +1,4 @@
-package jorge.arffGenerator;
+package arffGenerator;
 
 /*
  *    TextDirectoryToArff.java
