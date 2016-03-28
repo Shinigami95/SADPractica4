@@ -1,5 +1,9 @@
 package modelGenerator;
 
+/**
+ * 
+ * @author Mikel Alb&oacute;niga, Unai Garc&iacute;a y Jorge P&eacute;rez.
+ */
 public class ModelGenerator {
 
 	public static void main(String[] args){
@@ -39,6 +43,9 @@ public class ModelGenerator {
 		}
 	}
 	
+	/**
+	 * Imprime las instrucciones. 
+	 */
 	public static void printInst(){
 		String s= "------------------------- INSTRUCCIONES -------------------------\n"
 				+ "java -jar GetModel.jar -t train.arff -d dev.arff [-s] [-n]\n"

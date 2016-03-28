@@ -30,12 +30,20 @@ import weka.core.SerializationHelper;
 import weka.filters.Filter;
 import weka.filters.unsupervised.instance.RemovePercentage;
 
+/**
+ * 
+ * @author Mikel Alb&oacute;niga, Unai Garc&iacute;a y Jorge P&eacute;rez.
+ */
 public class GestorAjusteParam {
 
 	private static GestorAjusteParam mGest;
 	
 	private GestorAjusteParam(){}
 	
+	/**
+	 * Devuelve una unica &uacute;nica instancia de la clase.
+	 * @return mGest 
+	 */
 	public static GestorAjusteParam getGestor() {
 		if(mGest==null){
 			mGest = new GestorAjusteParam();

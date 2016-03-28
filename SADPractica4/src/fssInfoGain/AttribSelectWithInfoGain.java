@@ -3,6 +3,10 @@ package fssInfoGain;
 import java.io.File;
 import java.io.FileNotFoundException;
 
+/**
+ * 
+ * @author Mikel Alb&oacute;niga, Unai Garc&iacute;a y Jorge P&eacute;rez.
+ */
 public class AttribSelectWithInfoGain {
 	public static void main(String[] args){
 		if(args.length<2){
@@ -31,6 +35,9 @@ public class AttribSelectWithInfoGain {
 		}
 	}
 	
+	/**
+	 * Imprime las instrucciones. 
+	 */
 	private static void printInst(){
 		String s= "------------------------------- INSTRUCCIONES -------------------------------\n"
 				+ "java -jar fssInfoGain.jar train.arff {fich.arff} objetive_dir\n"

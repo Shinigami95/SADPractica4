@@ -31,7 +31,7 @@ import weka.core.*;
  *
  * TextDirectoryToArff <directory path> <p/>
  *
- * @author Richard Kirkby (rkirkby at cs.waikato.ac.nz)
+ * @author Richard Kirkby (rkirkby at cs.waikato.ac.nz). Modificado por: Mikel Alb&oacute;niga, Unai Garc&iacute;a y Jorge P&eacute;rez.
  * @version 1.0
  */
 public class TextDirectoryToArff implements TextPlainToArff{
@@ -71,6 +71,14 @@ public class TextDirectoryToArff implements TextPlainToArff{
 		return data;
 	}
 	
+	/**
+	 * Crea instancias a partir del texto plano que se encuentra en los archivos dentro de las carpetas del path especificado.
+	 * Las instancias tendr&aacute;n como atributosun nominal con la clase (seran los nombres de las carpetas que contienen los archivos) 
+	 * y un String con el texto que aparec&iacute;a en los ficheros.
+	 * @param clase - String que indica los posibles valores de la clase en el fichero arff que se crear&aacute;.
+	 * @param directoryPath - String que indica el path del directorio donde se encuentran los ficheros/directorios con las instancias.
+	 * @param data - Conjunto de instancias que forman la estructura para guardar las nuevas instancias.
+	 */
 	private void cargarAtrribDeClase(String clase, String directoryPath, Instances data){
 		System.out.println("Se crean las instancias de la clase: "+ clase);
 		File dir = new File(directoryPath);
@@ -104,6 +112,11 @@ public class TextDirectoryToArff implements TextPlainToArff{
 		System.out.println("Se crearon las instancias de la clase: "+ clase);
 	}
 	
+	/**
+	 * Clasifica el par&aacute;metro que se le pasa como car&aacute;cter problem&aacute;tico o car&aacute;cter normal.
+	 * @param c - Car&aacute;cter a clasificar.
+	 * @return Boolean
+	 */
 	private boolean isFakeChar(char c){
 		if(c=='@'||c==','||c=='%'||c=='#'||c=='/'||c=='\''||c=='\"'){
 			return true;

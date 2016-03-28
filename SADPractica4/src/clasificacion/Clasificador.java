@@ -1,5 +1,9 @@
 package clasificacion;
 
+/**
+ * 
+ * @author Mikel Alb&oacute;niga, Unai Garc&iacute;a y Jorge P&eacute;rez.
+ */
 public class Clasificador {
 
 	public static void main(String[] args){
@@ -39,6 +43,9 @@ public class Clasificador {
 		}
 	}
 	
+	/**
+	 * Imprime las instrucciones. 
+	 */
 	public static void printInst(){
 		String s= "---------------------------------------------- INSTRUCCIONES ----------------------------------------------\n"
 				+ "java -jar Classify.jar -b blind.arff -m fich.model [-r result.txt] [-n]\n"

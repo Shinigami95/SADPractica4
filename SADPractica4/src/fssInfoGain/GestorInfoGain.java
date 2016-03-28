@@ -11,12 +11,20 @@ import weka.core.Instances;
 import weka.filters.Filter;
 import weka.filters.supervised.attribute.AttributeSelection;
 
+/**
+ * 
+ * @author Mikel Alb&oacute;niga, Unai Garc&iacute;a y Jorge P&eacute;rez.
+ */
 public class GestorInfoGain {
 
 	private static GestorInfoGain mGest;
 	
 	private GestorInfoGain(){}
 	
+	/**
+	 * Devuelve una unica &uacute;nica instancia de la clase.
+	 * @return mGest 
+	 */
 	public static GestorInfoGain getGestor() {
 		if(mGest == null){
 			mGest = new GestorInfoGain();

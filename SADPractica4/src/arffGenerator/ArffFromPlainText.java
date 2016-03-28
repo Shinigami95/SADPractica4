@@ -3,6 +3,10 @@ package arffGenerator;
 import java.io.FileWriter;
 import weka.core.Instances;
 
+/**
+ * 
+ * @author Mikel Alb&oacute;niga, Unai Garc&iacute;a y Jorge P&eacute;rez.
+ */
 public class ArffFromPlainText {
 	public static void main(String[] args){
 		try{
@@ -61,6 +65,13 @@ public class ArffFromPlainText {
 		}
 	}
 	
+	/**
+	 * Crea un arff con los atributos y las instancias sacadas del fichero/directorio que se especifica en los par&aacute;metros.
+	 * @param tpta - Interfaz que nos indica el tipo de fichero del que e sacar&aacute;n las instancias. 
+	 * @param dir - String que indica el path del fichero/directorio del que se extraer&aacute;n las instancias.
+	 * @param arff - String que indica el path donde se guardar&aacute; el arff resultante.
+	 * @param superv - Booleano que indica si las instancias ya est&aacute;n clasificadas o no.
+	 */
 	private static void getArffFrom(TextPlainToArff tpta, String dir, String arff, boolean superv){
 		try {
 			System.out.println("Se crear\u00E1 el fichero ARFF");
@@ -81,6 +92,9 @@ public class ArffFromPlainText {
 		}
 	}
 	
+	/**
+	 * Imprime las instrucciones. 
+	 */
 	private static void printInst(){
 		String s= "----------------------------------- INSTRUCCIONES -----------------------------------\n"
 				+ "java -jar getArff.jar -f plain_data -a arff_file -t {0,1,2} [-u]\n"

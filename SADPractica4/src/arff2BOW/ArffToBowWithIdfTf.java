@@ -3,6 +3,10 @@ package arff2BOW;
 import java.io.File;
 import java.io.FileNotFoundException;
 
+/**
+ * 
+ * @author Mikel Alb&oacute;niga, Unai Garc&iacute;a y Jorge P&eacute;rez.
+ */
 public class ArffToBowWithIdfTf{
 	
 	public static void main(String[] args){
@@ -30,6 +34,9 @@ public class ArffToBowWithIdfTf{
 		}
 	}
 	
+	/**
+	 * Imprime las instrucciones. 
+	 */
 	private static void printInst(){
 		String s= "----------------------------------- INSTRUCCIONES -----------------------------------\n"
 				+ "java -jar fssTFIDF.jar {fich.arff} objetive_dir\n"

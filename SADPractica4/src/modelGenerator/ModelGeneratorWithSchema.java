@@ -1,5 +1,9 @@
 package modelGenerator;
 
+/**
+ * 
+ * @author Mikel Alb&oacute;niga, Unai Garc&iacute;a y Jorge P&eacute;rez.
+ */
 public class ModelGeneratorWithSchema {
 
 	public static void main(String[] args){
@@ -47,6 +51,9 @@ public class ModelGeneratorWithSchema {
 		}
 	}
 	
+	/**
+	 * Imprime las instrucciones. 
+	 */
 	public static void printInst(){
 		String s= "---------------------------------------- INSTRUCCIONES ----------------------------------------\n"
 				+ "java -jar GetModelConEsquema.jar -t train.arff -d dev.arff -e {1,2,3} [-s] [-n] [-m fich.model]\n"

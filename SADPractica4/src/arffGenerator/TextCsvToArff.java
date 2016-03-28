@@ -9,8 +9,12 @@ import weka.core.FastVector;
 import weka.core.Instance;
 import weka.core.Instances;
 
+/**
+ * 
+ * @author Mikel Alb&oacute;niga, Unai Garc&iacute;a y Jorge P&eacute;rez.
+ */
 public class TextCsvToArff implements TextPlainToArff{
-
+	
 	@Override
 	public Instances createDatasetSupervised(String filePath) throws Exception {
 		return createDataset(filePath);
@@ -21,6 +25,12 @@ public class TextCsvToArff implements TextPlainToArff{
 		return createDataset(filePath);
 	}
 	
+	/**
+	 * Extrae las instancias del archivo csv que se le pasa como par&aacute;metro.
+	 * @param filePath - String que indica el path donde se encuentra el csv que contiene las instancias.
+	 * @return data - Instancias que se encontr&aacute;ban en el csv indicado por el par&aacute;metro filePath.
+	 * @throws Exception
+	 */
 	private Instances createDataset(String filePath) throws Exception {
 		File file = new File(filePath);
 		FileReader read = new FileReader(file);
@@ -69,6 +79,11 @@ public class TextCsvToArff implements TextPlainToArff{
 		return data;
 	}
 	
+	/**
+	 * Clasifica el par&aacute;metro que se le pasa como car&aacute;cter problem&aacute;tico o car&aacute;cter normal.
+	 * @param c - Car&aacute;cter a clasificar.
+	 * @return Boolean
+	 */
 	private boolean isFakeChar(char c){
 		if((c>='A' && c<='Z') || (c>='a' && c<='z') || (c>='0' && c<='9') || c==','|| c==' '){
 			return false;

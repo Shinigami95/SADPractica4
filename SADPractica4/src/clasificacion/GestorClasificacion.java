@@ -16,18 +16,34 @@ import weka.core.FastVector;
 import weka.core.Instances;
 import weka.core.SerializationHelper;
 
+/**
+ * 
+ * @author Mikel Alb&oacute;niga, Unai Garc&iacute;a y Jorge P&eacute;rez.
+ */
 public class GestorClasificacion {
 	private static GestorClasificacion mGest;
 	
 	private GestorClasificacion(){}
 	
+	/**
+	 * Devuelve una unica &uacute;nica instancia de la clase.
+	 * @return mGest 
+	 */
 	public static GestorClasificacion getGestor(){
 		if(mGest==null){
 			mGest = new GestorClasificacion();
 		}
 		return mGest;
 	}
-
+	
+	/**
+	 * Clasifica las instancias del fichero pasado por uno de los par&aacute;metros. 
+	 * La clasificacion se hace mediante la carga del modelo, el cual, tambi&eacute;n especifican, y el resultado puede ser escrito por pantalla o
+	 * se guardar&aacute; en el fichero que determina cc en uno de sus atributos.
+	 * @param cc -  ClasifConfig que guarda: El path del fichero con instancias a clasificar, el path del modelo, 
+	 * un booleano que indica la utilizaci&oacute;n de NaibeBayes o BayesNetwork y el path del fichero(si lo hay) 
+	 * donde se guardar&aacute;n los resultados.
+	 */
 	public void clasificar(ClasifConfig cc){
 		try{
 			File blind = new File(cc.getBlindPath());
