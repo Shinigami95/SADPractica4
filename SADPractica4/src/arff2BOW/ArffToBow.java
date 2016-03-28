@@ -5,7 +5,7 @@ import java.io.FileNotFoundException;
 
 public class ArffToBow {
 	public static void main(String[] args){
-		if(args.length<2){
+		if(args.length<2){ 
 			printInst();
 		} else {
 			try {
