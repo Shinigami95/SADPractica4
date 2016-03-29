@@ -38,7 +38,7 @@ public class ModelConfig {
 	}
 	
 	/**
-	 * Devuelve un booleano que indica si se quiere que aparezca m&aacute;s unformaci&oacute;n de la necesaria.
+	 * Devuelve un booleano que indica si se quiere que aparezca m&aacute;s informaci&oacute;n de la necesaria.
 	 * @return flagS
 	 */
 	public boolean isFlagS() {
