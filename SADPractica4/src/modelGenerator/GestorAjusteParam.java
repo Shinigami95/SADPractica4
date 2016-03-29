@@ -51,6 +51,20 @@ public class GestorAjusteParam {
 		return mGest;
 	}
 	
+	/**
+	 * Hace las llamadas necesarias para clasificar y crear un modelo de aprendizaje seg&uacute;n el par&aacute;metro que se le pasa.
+	 * @param mConf - Modelo de configuraci&ocaute;n en el que se guardar&aacute;n los siguientes datos: 
+	 * booleano que indica si se utiliza NaiveBayes o BayesNetwork, el path donde se encuentra fichero train.arff, 
+	 * el path donde se encuentra el fichero dev.arff, el path en el que se desea guardar el modelo,
+	 *  un booleano que indica si se mostrar&aacute; toda la informaci&oacute;n por pantalla y 
+	 *  un int que determina el esquema de evaluaci&oacute;n. Estos son los posibles valores del esquema de evaluaci&oacute;n:
+	 * <br><br>
+	 * <table align="center" border=1><tr><th align="center">Valor</th><th align="center">Tipo de esquema</th></tr>
+	 * <tr><td align="center">1</td><td align="center">No Honesto</td></tr>
+	 * <tr><td align="center">2</td><td align="center">Hold Out</td></tr>
+	 * <tr><td align="center">3</td><td align="center">10-Fold Crossvalidation</td></tr>
+	 * </table>
+	 */
 	public void infiereConEsquema(ModelConfig mConf) {
 		try {
 			File train = new File(mConf.getTrainPath());
@@ -78,7 +92,21 @@ public class GestorAjusteParam {
 			e.printStackTrace();
 		}
 	}
-
+	
+	/**
+	 * Hace la clasificaci&oacute;n de las instacias indicadas en los par&aacute;metros y 
+	 * guarda el modelo de aprendizaje en el path determinado por el atibuto modelPath.
+	 * @param classif -  Es el tipo de clasificado a utilizar. Puede ser NaiveBayes o BayesNetwork.
+	 * @param trainDev - Es el conjunto de instancias a clasificar y guardar el modelo de lo aprendido de ellas.
+	 * @param modelPath - String que indica el path en el que se guardar&aacute; el modelo obtenido.
+	 * @param esq - Int que indica el tipo de esquema de evaluaci&oacute;n a utilizar. Sus valores pueden ser los siguientes:
+	 * <br><br>
+	 * <table align="center" border=1><tr><th align="center">Valor</th><th align="center">Tipo de esquema</th></tr>
+	 * <tr><td align="center">1</td><td align="center">No Honesto</td></tr>
+	 * <tr><td align="center">2</td><td align="center">Hold Out</td></tr>
+	 * <tr><td align="center">3</td><td align="center">10-Fold Crossvalidation</td></tr>
+	 * </table>
+	 */
 	private void inferenceConEsquema(Classifier classif,int esq, Instances trainDev, String modelPath) {
 		try {
 			trainDev.randomize(new Random(42));
@@ -115,7 +143,14 @@ public class GestorAjusteParam {
 			e.printStackTrace();
 		}
 	}
-
+	
+	/**
+	 * Separa las instancias en dos conjuntos mediante la especificaci&oacute;n de un porcentage con el filtro RemovePercentage.
+	 * @param percentageSplit - Double que indica el porcentage en el que se separan las instancias.
+	 * @param trainDev - Instancias a separar con el filtro RemovePercentage.
+	 * @return trainTest - Array en el que se guardan las instancias separadas por el filtro RemovePercentage.
+	 * @throws Exception
+	 */
 	private Instances[] splitInstances(double percentageSplit, Instances trainDev) throws Exception {
 		Instances[] trainTest = new Instances[2];
 		RemovePercentage rp = new RemovePercentage();
@@ -130,7 +165,21 @@ public class GestorAjusteParam {
 		trainTest[1] = Filter.useFilter(trainDev, rp);
 		return trainTest;
 	}
-
+	
+	/**
+	 * Hace las llamadas necesarias para clasificar y crear un modelo de aprendizaje seg&uacute;n el par&aacute;metro que se le pasa.
+	 * @param mConf - Modelo de configuraci&ocaute;n en el que se guardar&aacute;n los siguientes datos: 
+	 * booleano que indica si se utiliza NaiveBayes o BayesNetwork, el path donde se encuentra fichero train.arff, 
+	 * el path donde se encuentra el fichero dev.arff, el path en el que se desea guardar el modelo,
+	 *  un booleano que indica si se mostrar&aacute; toda la informaci&oacute;n por pantalla y 
+	 *  un int que determina el esquema de evaluaci&oacute;n (en este caso no se utiliza). Estos son los posibles valores del esquema de evaluaci&oacute;n:
+	 * <br><br>
+	 * <table align="center" border=1><tr><th align="center">Valor</th><th align="center">Tipo de esquema</th></tr>
+	 * <tr><td align="center">1</td><td align="center">No Honesto</td></tr>
+	 * <tr><td align="center">2</td><td align="center">Hold Out</td></tr>
+	 * <tr><td align="center">3</td><td align="center">10-Fold Crossvalidation</td></tr>
+	 * </table>
+	 */
 	public void infiere(ModelConfig mConf) {
 		try {
 			File train = new File(mConf.getTrainPath());
@@ -154,7 +203,15 @@ public class GestorAjusteParam {
 			e.printStackTrace();
 		}
 	}
-
+	
+	/**
+	 * Busca la mejor configuraci&oacute;n del clasificador BayesNetwork.
+	 * @param trainInst - Instancias con las que se entrena al clasificador.
+	 * @param devInst - Instancias con las que se probar&aacute; lo aprendido con trainInst.
+	 * @param flagS - Booleano que indica si se quiere mostrar por pantalla toda la informaci&oacute;n de la clasificaci&oacute;n.
+	 * @return trainInst - Clasificador con la configuraci&oacute;n que mayor fmeasure ha obtenido para la clase minoritaria.
+	 * @throws Exception
+	 */
 	private BayesNet bayesNetInference(Instances trainInst, Instances devInst, boolean flagS) throws Exception {
 		BayesNet bn, bnMax = null;
 		int iMax=0, jMax=0;
@@ -196,6 +253,16 @@ public class GestorAjusteParam {
 		return bnMax;
 	}
 	
+	/**
+	 * Clasifica las instancias que se le pasan con el par&aacute;metro BayesNetwork 
+	 * y devuelve la evaluaci&oacute;n obtenida.
+	 * @param bn - Clasificador BayesNetwork con una con una configuraci&oacute;n espec&iacute;fica.
+	 * @param trainInst - Instancias con las que se entrena al clasificador.
+	 * @param devInst - Instancias con las que se probar&aacute; lo aprendido con trainInst.
+	 * @param flagS - Booleano que indica si se quiere mostrar por pantalla toda la informaci&oacute;n de la clasificaci&oacute;n.
+	 * @return eval - Evaluador con el que se ha clasificado.
+	 * @throws Exception
+	 */
 	private Evaluation bayesNetEval(BayesNet bn, Instances trainInst, Instances devInst, boolean flagS) throws Exception {
 			double fmeasure = 0.0;
 			Evaluation eval = new Evaluation(trainInst);
@@ -211,9 +278,15 @@ public class GestorAjusteParam {
 			return eval;
 	}
 
-	/*
-		0 - SimpleEstimator
-		1 - BMAEstimator
+	/**
+	 * Especifica el estimador a utilizar en el clasificador BayesNetwork.
+	 * @param i - Int que indica el estimador a utilizar en el clasificador BayesNetwork. Sus posibles valores son:
+	 * <br><br>
+	 * <table align="center" border=1><tr><th align="center">Valor</th><th align="center">Estimador</th></tr>
+	 * <tr><td align="center">0</td><td align="center">SimpleEstimator</td></tr>
+	 * <tr><td align="center">1</td><td align="center">BMAEstimator</td></tr>
+	 * </table>
+	 * @return bne - Clasificador con la configuraci&oacute;n del estimador actualizada.
 	 */
 	private BayesNetEstimator getEstimator(int i){
 		BayesNetEstimator bne;
@@ -231,14 +304,20 @@ public class GestorAjusteParam {
 		System.out.println("ESTIMATOR "+i+": " +bne.getClass());
 		return bne;
 	}
-	
-	/*
-		0 - HillClimber
-		1 - K2
-		2 - LAGDHillClimber
-		3 - RepeatedHillClimber
-		4 - TabuSearch
-		5 - TAN
+
+	/**
+	 * Especifica el algoritmo de busqueda a utilizar en el clasificador BayesNetwork.
+	 * @param i - Int que indica el algoritmo de busqueda a utilizar en el clasificador BayesNetwork. Sus posibles valores son:
+	 * <br><br>
+	 * <table align="center" border=1><tr><th align="center">Valor</th><th align="center">Algoritmo de busqueda</th></tr>
+	 * <tr><td align="center">0</td><td align="center">HillClimber</td></tr>
+	 * <tr><td align="center">1</td><td align="center">K2</td></tr>
+	 * <tr><td align="center">2</td><td align="center">LAGDHillClimber</td></tr>
+	 * <tr><td align="center">3</td><td align="center">RepeatedHillClimber</td></tr>
+	 * <tr><td align="center">4</td><td align="center">TabuSearch</td></tr>
+	 * <tr><td align="center">5</td><td align="center">TAN</td></tr>
+	 * </table>
+	 * @return bne - Clasificador con la configuraci&oacute;n del algoritmo de busqueda actualizada.
 	 */
 	private SearchAlgorithm getSearch(int i){
 		SearchAlgorithm sa;
@@ -269,7 +348,12 @@ public class GestorAjusteParam {
 		return sa;
 	}
 	
-
+	/**
+	 * Clasifica mediante NaiveBayes las instancias que se le pasan como par&aacute;metro mediante train vs test.
+	 * @param trainInst - Instancias con las que se entrena al clasificador.
+	 * @param devInst - Instancias con las que se probar&aacute; lo aprendido con trainInst.
+	 * @param flagS - Booleano que indica si se quiere mostrar por pantalla toda la informaci&oacute;n de la clasificaci&oacute;n.
+	 */
 	private void naiveInference(Instances trainInst, Instances devInst, boolean flagS) {
 		try {
 			NaiveBayes nb = new NaiveBayes();
@@ -289,7 +373,12 @@ public class GestorAjusteParam {
 			e.printStackTrace();
 		}
 	}
-
+	
+	/**
+	 * Devuelve la clase minoritaria.
+	 * @param trainInst - Instancias que ha de recorrer para encontrar la clase minoritaria.
+	 * @return index - &Iacute;ndice de la clase minoritaria.
+	 */
 	private int getMinimunClassIndex(Instances trainInst) {
 		int index = -1;
 		int valOfIndex = trainInst.numInstances()+1;
@@ -315,6 +404,11 @@ public class GestorAjusteParam {
 		return index;
 	}
 	
+	/**
+	 * Fusiona el array de instancias que se le pasa por par&aacute;metro.
+	 * @param instList - Array de instancias a combinar.
+	 * @return allInst - Instancias ya fusionadas.
+	 */
 	private Instances combine(Instances[] instList) {
 		Instances allInst = new Instances(instList[0]);
 		for(int i = 1; i<instList.length;i++){

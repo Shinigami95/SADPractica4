@@ -27,7 +27,7 @@ public class ClasifConfig {
 	
 	/**
 	 * Guarda en la variable global blindPath el string que se pasa como par&aacute;metro. 
-	 * @param blindPath String que indica el path en el que se encuentra el fichero blind.arff.
+	 * @param blindPath - String que indica el path en el que se encuentra el fichero blind.arff.
 	 */
 	public void setBlindPath(String blindPath) {
 		this.blindPath = blindPath;
@@ -43,7 +43,7 @@ public class ClasifConfig {
 	
 	/**
 	 * Guarda en la variable global modelPath el string que se pasa como par&aacute;metro. 
-	 * @param modelPath String que indica el path en el que se encuentra el binario que guarda el modelo.
+	 * @param modelPath - String que indica el path en el que se encuentra el binario que guarda el modelo.
 	 */
 	public void setModelPath(String modelPath) {
 		this.modelPath = modelPath;
@@ -59,7 +59,7 @@ public class ClasifConfig {
 	
 	/**
 	 * Guarda en la variable global resulPath el string que se pasa como par&aacute;metro. 
-	 * @param resulPath String que indica el path en el que se guardar&aacute; el fichero con los resultados de las predicciones.
+	 * @param resulPath - String que indica el path en el que se guardar&aacute; el fichero con los resultados de las predicciones.
 	 */
 	public void setResultPath(String resultPath) {
 		this.resultPath = resultPath;
@@ -75,7 +75,7 @@ public class ClasifConfig {
 	
 	/**
 	 * Guarda en la variable global resulPath el booleano que se pasa como par&aacute;metro. 
-	 * @param resulPath String que indica el path en el que se guardar&aacute; el fichero con los resultados de las predicciones.
+	 * @param resulPath - String que indica el path en el que se guardar&aacute; el fichero con los resultados de las predicciones.
 	 */
 	public void setNaive(boolean naive) {
 		this.naive = naive;

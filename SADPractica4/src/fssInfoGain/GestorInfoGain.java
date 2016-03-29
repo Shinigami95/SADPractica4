@@ -32,6 +32,13 @@ public class GestorInfoGain {
 		return mGest;
 	}
 	
+	/**
+	 * Filtra con AtributeSelection (InfoGain) las instancias del fichero pasado por par&aacute;metros, 
+	 * las separa en varios arff y los crea en en la carpeta determinada por el par&ametro filObj.
+	 * @param filTrain - Fichero con todas las instancias a filtran con AtributeSelection (InfoGain).
+	 * @param filArray - Array de ficheros en los que se separar&aacute;n las instancias ya filtradas.
+	 * @param filObj - Fichero/directorio en el que se almacenar&aacute;n los arff generados.
+	 */
 	public void generateInfoGainedAttributes(File filTrain, File[] filArray, File filObj) {
 		try {
 			System.out.println("Aplicando InfoGain...");

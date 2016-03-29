@@ -31,7 +31,7 @@ public class ModelConfig {
 	
 	/**
 	 * Guarda en la variable global useNaive el booleano que se pasa como par&aacute;metro. 
-	 * @param blindPath Booleano que indica si se utiliza NaiveBayes o BayesNetwork.
+	 * @param blindPath - Booleano que indica si se utiliza NaiveBayes o BayesNetwork.
 	 */
 	public void setUseNaive(boolean useNaive) {
 		this.useNaive = useNaive;
@@ -47,7 +47,7 @@ public class ModelConfig {
 	
 	/**
 	 * Guarda en flagS el booleano que se le pasa por par&aacute;metro.
-	 * @param flagS Booleano que indica si se quiere recibir mayor cantidad de informaci&oacute;n.
+	 * @param flagS - Booleano que indica si se quiere recibir mayor cantidad de informaci&oacute;n.
 	 */
 	public void setFlagS(boolean flagS) {
 		this.flagS = flagS;
@@ -63,7 +63,7 @@ public class ModelConfig {
 	
 	/**
 	 * Guarda en la variable trainPath el String que se le pasa como par&aacute;metro.
-	 * @param trainPath String que indica el path en el que se guarda train.arff.
+	 * @param trainPath - String que indica el path en el que se guarda train.arff.
 	 */
 	public void setTrainPath(String trainPath) {
 		this.trainPath = trainPath;
@@ -79,7 +79,7 @@ public class ModelConfig {
 	
 	/**
 	 * Guarda en la variable devPath el String que se le pasa como par&aacute;metro.
-	 * @param devPath String que indica el path en el que se guarda dev.arff.
+	 * @param devPath - String que indica el path en el que se guarda dev.arff.
 	 */
 	public void setDevPath(String devPath) {
 		this.devPath = devPath;
@@ -95,7 +95,7 @@ public class ModelConfig {
 	
 	/**
 	 * Guarda en la variable global modelPath el string que se pasa como par&aacute;metro. 
-	 * @param modelPath String que indica el path se guardar&aacute; el binario con el modelo.
+	 * @param modelPath - String que indica el path se guardar&aacute; el binario con el modelo.
 	 */
 	public void setModelPath(String modelPath) {
 		this.modelPath = modelPath;
@@ -111,9 +111,9 @@ public class ModelConfig {
 	
 	/**
 	 * Guarda en la variable evaluationSchema el int que se le pasa como par&aacute;metro.
-	 * @param evaluationSchema Int que indica el esquema de evaluaci&oacute;n a utilizar:
+	 * @param evaluationSchema - Int que indica el esquema de evaluaci&oacute;n a utilizar:
 	 * <br><br>
-	 * <table align="center" border=1><tr><td align="center">Valor</td><td align="center">Tipo de esquema</td></tr>
+	 * <table align="center" border=1><tr><th align="center">Valor</th><th align="center">Tipo de esquema</th></tr>
 	 * <tr><td align="center">1</td><td align="center">No Honesto</td></tr>
 	 * <tr><td align="center">2</td><td align="center">Hold Out</td></tr>
 	 * <tr><td align="center">3</td><td align="center">10-Fold Crossvalidation</td></tr>
