@@ -26,7 +26,7 @@ public class GestorClasificacion {
 	private GestorClasificacion(){}
 	
 	/**
-	 * Devuelve una unica &uacute;nica instancia de la clase.
+	 * Devuelve una &uacute;nica instancia de la clase.
 	 * @return mGest 
 	 */
 	public static GestorClasificacion getGestor(){
@@ -38,7 +38,7 @@ public class GestorClasificacion {
 	
 	/**
 	 * Clasifica las instancias del fichero pasado por uno de los par&aacute;metros. 
-	 * La clasificacion se hace mediante la carga del modelo, el cual, tambi&eacute;n especifican, y el resultado puede ser escrito por pantalla o
+	 * La clasificaci&oacute;n se hace mediante la carga del modelo y el resultado puede ser escrito por pantalla o
 	 * se guardar&aacute; en el fichero que determina cc en uno de sus atributos.
 	 * @param cc -  ClasifConfig que guarda: El path del fichero con instancias a clasificar, el path del modelo, 
 	 * un booleano que indica la utilizaci&oacute;n de NaibeBayes o BayesNetwork y el path del fichero(si lo hay) 

@@ -21,7 +21,7 @@ public class GestorBagOfWords {
 	private GestorBagOfWords(){}
 	
 	/**
-	 * Devuelve una unica &uacute;nica instancia de la clase.
+	 * Devuelve una &uacute;nica instancia de la clase.
 	 * @return mGest
 	 */
 	public static GestorBagOfWords getGestor() {
@@ -33,7 +33,7 @@ public class GestorBagOfWords {
 	
 	/**
 	 * Fusiona todos los arff que se le pasan como par&aacute;metro y los filtra con StringToWordVector (BOW). 
-	 * Por &uacute;ltimo vuelve a separalos y los crea en el path especificado en los par&aacute;metros.
+	 * Por &uacute;ltimo vuelve a separarlos y los crea en el path especificado en los par&aacute;metros.
 	 * @param objetiveFil - Fichero en el que se guardar&aacute;n los .arff obtenidos.
 	 * @param arffs - Array que se compone de los ficheros arff a los que se quiere aplicar el StringToWordVector (BOW).
 	 * @param idft - Booleano que activa el par&aacute;metro IDFTransform en el filtro StringToWordVector (BOW).
@@ -94,7 +94,7 @@ public class GestorBagOfWords {
 	
 	/**
 	 * Prepara el filtro StringToWordVector (BOW) para poder utilizarlo. 
-	 * Para ello se le pasan al m&eacute;todo los parametros que indican algunas de sus especificaciones.  
+	 * Para ello se le pasan al m&eacute;todo los par&aacute;metros que indican algunas de sus especificaciones.  
 	 * @param trainInst - Instancias que dan formato al filtro StringToWordVector (BOW).
 	 * @param idft - Booleano que activa o desactiva el par&aacute;metro IDFTransform en el filtro StringToWordVector (BOW).
 	 * @param tft - Booleano que activa o desactiva el par&aacute;metro TFTransform en el filtro StringToWordVector (BOW).

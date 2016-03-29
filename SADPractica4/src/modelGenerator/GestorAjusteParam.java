@@ -41,7 +41,7 @@ public class GestorAjusteParam {
 	private GestorAjusteParam(){}
 	
 	/**
-	 * Devuelve una unica &uacute;nica instancia de la clase.
+	 * Devuelve una &uacute;nica instancia de la clase.
 	 * @return mGest 
 	 */
 	public static GestorAjusteParam getGestor() {
@@ -53,9 +53,9 @@ public class GestorAjusteParam {
 	
 	/**
 	 * Hace las llamadas necesarias para clasificar y crear un modelo de aprendizaje seg&uacute;n el par&aacute;metro que se le pasa.
-	 * @param mConf - Modelo de configuraci&ocaute;n en el que se guardar&aacute;n los siguientes datos: 
+	 * @param mConf - Modelo de configuraci&oacute;n en el que se guardar&aacute;n los siguientes datos: 
 	 * booleano que indica si se utiliza NaiveBayes o BayesNetwork, el path donde se encuentra fichero train.arff, 
-	 * el path donde se encuentra el fichero dev.arff, el path en el que se desea guardar el modelo,
+	 * el path donde se encuentra el fichero dev.arff, el path en el que se desea guardar&aacute; el modelo,
 	 *  un booleano que indica si se mostrar&aacute; toda la informaci&oacute;n por pantalla y 
 	 *  un int que determina el esquema de evaluaci&oacute;n. Estos son los posibles valores del esquema de evaluaci&oacute;n:
 	 * <br><br>
@@ -95,9 +95,9 @@ public class GestorAjusteParam {
 	
 	/**
 	 * Hace la clasificaci&oacute;n de las instacias indicadas en los par&aacute;metros y 
-	 * guarda el modelo de aprendizaje en el path determinado por el atibuto modelPath.
+	 * guarda el modelo de aprendizaje en el path determinado por el atributo modelPath.
 	 * @param classif -  Es el tipo de clasificado a utilizar. Puede ser NaiveBayes o BayesNetwork.
-	 * @param trainDev - Es el conjunto de instancias a clasificar y guardar el modelo de lo aprendido de ellas.
+	 * @param trainDev - Es el conjunto de instancias a clasificar y del que seguarda el modelo de lo que ha aprendido.
 	 * @param modelPath - String que indica el path en el que se guardar&aacute; el modelo obtenido.
 	 * @param esq - Int que indica el tipo de esquema de evaluaci&oacute;n a utilizar. Sus valores pueden ser los siguientes:
 	 * <br><br>
@@ -146,7 +146,7 @@ public class GestorAjusteParam {
 	
 	/**
 	 * Separa las instancias en dos conjuntos mediante la especificaci&oacute;n de un porcentage con el filtro RemovePercentage.
-	 * @param percentageSplit - Double que indica el porcentage en el que se separan las instancias.
+	 * @param percentageSplit - Double que indica el porcentaje en el que se separan las instancias.
 	 * @param trainDev - Instancias a separar con el filtro RemovePercentage.
 	 * @return trainTest - Array en el que se guardan las instancias separadas por el filtro RemovePercentage.
 	 * @throws Exception
@@ -168,9 +168,9 @@ public class GestorAjusteParam {
 	
 	/**
 	 * Hace las llamadas necesarias para clasificar y crear un modelo de aprendizaje seg&uacute;n el par&aacute;metro que se le pasa.
-	 * @param mConf - Modelo de configuraci&ocaute;n en el que se guardar&aacute;n los siguientes datos: 
+	 * @param mConf - Modelo de configuraci&oacute;n en el que se guardar&aacute;n los siguientes datos: 
 	 * booleano que indica si se utiliza NaiveBayes o BayesNetwork, el path donde se encuentra fichero train.arff, 
-	 * el path donde se encuentra el fichero dev.arff, el path en el que se desea guardar el modelo,
+	 * el path donde se encuentra el fichero dev.arff, el path en el que se desea guardar&aacute; el modelo,
 	 *  un booleano que indica si se mostrar&aacute; toda la informaci&oacute;n por pantalla y 
 	 *  un int que determina el esquema de evaluaci&oacute;n (en este caso no se utiliza). Estos son los posibles valores del esquema de evaluaci&oacute;n:
 	 * <br><br>

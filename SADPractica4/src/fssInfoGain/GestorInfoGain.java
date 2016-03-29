@@ -22,7 +22,7 @@ public class GestorInfoGain {
 	private GestorInfoGain(){}
 	
 	/**
-	 * Devuelve una unica &uacute;nica instancia de la clase.
+	 * Devuelve una &uacute;nica instancia de la clase.
 	 * @return mGest 
 	 */
 	public static GestorInfoGain getGestor() {
@@ -34,7 +34,7 @@ public class GestorInfoGain {
 	
 	/**
 	 * Filtra con AtributeSelection (InfoGain) las instancias del fichero pasado por par&aacute;metros, 
-	 * las separa en varios arff y los crea en en la carpeta determinada por el par&ametro filObj.
+	 * las separa en varios arff y los crea en en la carpeta determinada por el par&aacute;metro filObj.
 	 * @param filTrain - Fichero con todas las instancias a filtran con AtributeSelection (InfoGain).
 	 * @param filArray - Array de ficheros en los que se separar&aacute;n las instancias ya filtradas.
 	 * @param filObj - Fichero/directorio en el que se almacenar&aacute;n los arff generados.

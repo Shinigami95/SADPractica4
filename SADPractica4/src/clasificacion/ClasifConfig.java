@@ -26,7 +26,7 @@ public class ClasifConfig {
 	}
 	
 	/**
-	 * Guarda en la variable global blindPath el string que se pasa como par&aacute;metro. 
+	 * Guarda en la variable global blindPath el String que se pasa como par&aacute;metro. 
 	 * @param blindPath - String que indica el path en el que se encuentra el fichero blind.arff.
 	 */
 	public void setBlindPath(String blindPath) {

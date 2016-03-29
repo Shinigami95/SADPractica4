@@ -31,7 +31,7 @@ public class ModelConfig {
 	
 	/**
 	 * Guarda en la variable global useNaive el booleano que se pasa como par&aacute;metro. 
-	 * @param blindPath - Booleano que indica si se utiliza NaiveBayes o BayesNetwork.
+	 * @param useNaive - Booleano que indica si se utiliza NaiveBayes o BayesNetwork.
 	 */
 	public void setUseNaive(boolean useNaive) {
 		this.useNaive = useNaive;
@@ -54,7 +54,7 @@ public class ModelConfig {
 	}
 	
 	/**
-	 * Devuelve un String con el path en el que est&aacute; guargado train.arff.
+	 * Devuelve un String con el path en el que est&aacute; guardado train.arff.
 	 * @return trinpath 
 	 */
 	public String getTrainPath() {
@@ -70,7 +70,7 @@ public class ModelConfig {
 	}
 	
 	/**
-	 Devuelve un String con el path en el que est&aacute; guargado dev.arff.
+	 Devuelve un String con el path en el que est&aacute; guardado dev.arff.
 	 * @return devPath
 	 */
 	public String getDevPath() {
